@@ -81,7 +81,7 @@ class Plumo
     logger_access = NullLogger.new
 
     @server = WEBrick::HTTPServer.new(
-      DocumentRoot: File.join(__dir__, "public"),
+      DocumentRoot: File.join(__dir__, "plumo/public"),
       BindAddress: '127.0.0.1',
       Port: @opts[:port],
       AccessLog: [

@@ -1,4 +1,4 @@
-$LOAD_PATH.unshift './lib/plumo'
+$LOAD_PATH.unshift './lib'
 
 require 'plumo'
 
