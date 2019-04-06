@@ -1,0 +1,43 @@
+#!/usr/bin/env ruby
+
+$script_path = ARGV[0]
+$updated_at = Time.now
+$status = :running
+$child_pid = nil
+
+def kill_child
+  puts "kill"
+  Process.kill :INT, $child_pid
+  Process.waitpid $child_pid
+end
+
+def main
+  puts "spawn"
+  $child_pid = spawn "ruby #{$script_path}"
+
+  while $status == :running
+    t = File.stat($script_path).mtime
+
+    if $updated_at < t
+      puts "changed"
+      $updated_at = t
+      kill_child
+      break
+    end
+
+    sleep 1
+  end
+end
+
+Signal.trap(:INT) do
+  $status = :stop
+  kill_child
+end
+
+begin
+  while $status == :running
+    main
+  end
+rescue => e
+  p e
+end
