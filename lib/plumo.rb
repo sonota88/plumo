@@ -165,7 +165,7 @@ class Plumo
     if style.key?(:color)
       cmds << [:fillStyle, style[:color]]
     end
-    
+
     cmds += [
       [:beginPath],
       [:fillRect, x, y, w, h],
@@ -180,7 +180,7 @@ class Plumo
     if style.key?(:color)
       cmds << [:fillStyle, style[:color]]
     end
-    
+
     cmds += [
       [:beginPath],
       [:arc,
