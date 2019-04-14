@@ -1,0 +1,43 @@
+<html>
+
+  <head>
+    <meta charset="utf-8" />
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="./plumo.js"></script>
+
+    <style>
+     * {
+       font-family: monospace;
+     }
+    </style>
+  </head>
+
+  <body
+      style="
+             background: #222;
+             color: #ccc;
+             "
+  >
+    <div>
+      ping: <span id="ping"></span>
+    </div>
+    
+    <div>
+      requests/sec: <span id="rps">-</span>
+    </div>
+
+    <div>
+      queue size: <span id="qsize">-</span>
+      <pre
+          id="qsize_bar"
+          style="font-size: 40%;"> </pre>
+    </div>
+
+    <canvas
+        width="100px" height="100px"
+        style="border: solid 1px #000;"
+    />
+  </body>
+
+</html>
