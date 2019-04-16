@@ -140,6 +140,8 @@ class Plumo
         cmds: cmds
       })
     end
+
+    nil
   end
 
   def line(x0, y0, x1, y1, style={})
