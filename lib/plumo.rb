@@ -168,6 +168,20 @@ class Plumo
     draw(*cmds)
   end
 
+  def stroke_rect(x, y, w, h, style={})
+    cmds = []
+
+    if style.key?(:color)
+      cmds << [:strokeStyle, style[:color]]
+    end
+
+    cmds += [
+      [:strokeRect, x, y, w, h]
+    ]
+
+    draw(*cmds)
+  end
+
   def fill_rect(x, y, w, h, style={})
     cmds = []
 
