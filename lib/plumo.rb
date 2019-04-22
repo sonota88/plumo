@@ -197,6 +197,26 @@ class Plumo
     draw(*cmds)
   end
 
+  def stroke_circle(x, y, r, style={})
+    cmds = []
+
+    if style.key?(:color)
+      cmds << [:strokeStyle, style[:color]]
+    end
+
+    cmds += [
+      [:beginPath],
+      [:arc,
+       x, y,
+       r,
+       0, Math::PI * 2, false
+      ],
+      [:stroke]
+    ]
+
+    draw(*cmds)
+  end
+
   def fill_circle(x, y, r, style={})
     cmds = []
 
