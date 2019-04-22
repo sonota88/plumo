@@ -144,6 +144,13 @@ class Plumo
     nil
   end
 
+  def color(color)
+    draw(
+      [:strokeStyle, color],
+      [:fillStyle, color]
+    )
+  end
+
   def line(x0, y0, x1, y1, style={})
     cmds = []
 
