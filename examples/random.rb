@@ -34,6 +34,19 @@ loop do
     color: rand_color
   )
 
+  plumo.stroke_circle(
+    rand_x, rand_y, rand * 50,
+    fill: true,
+    color: rand_color
+  )
+
+  width = rand * 50
+  plumo.stroke_rect(
+    rand_x, rand_y,
+    width, width,
+    color: rand_color
+  )
+
   plumo.fill_circle(
     rand_x, rand_y, rand * 50,
     color: rand_color
