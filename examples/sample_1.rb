@@ -1,4 +1,4 @@
-$LOAD_PATH.unshift './lib'
+load File.join(__dir__, "helper.rb")
 
 require 'plumo'
 
