@@ -28,6 +28,8 @@ class Plumo
 
     @q = Thread::SizedQueue.new(100)
 
+    @first_reset_done = false
+    @first_reset_q = Thread::Queue.new
     @close_q = Thread::Queue.new
 
     @status = :starting
@@ -44,6 +46,11 @@ class Plumo
         h: "#{@h}px"
       }
     })
+
+    unless @first_reset_done
+      @first_reset_q.enq 1
+      @first_reset_done = true
+    end
   end
 
   def handle_comet(req)
@@ -82,7 +89,7 @@ class Plumo
 
     @server = WEBrick::HTTPServer.new(
       DocumentRoot: File.join(__dir__, "plumo/public"),
-      BindAddress: '127.0.0.1',
+      BindAddress: "127.0.0.1",
       Port: @opts[:port],
       AccessLog: [
         [logger_access, WEBrick::AccessLog::COMMON_LOG_FORMAT],
@@ -129,11 +136,12 @@ class Plumo
     @server_thread = Thread.new do
       @server.start
     end
-
-    sleep 0.1
   end
 
   def draw(*cmds)
+    # Prevent enqueue before first reset
+    @first_reset_q.deq unless @first_reset_done
+
     if @status == :running
       @q.enq({
         type: :cmds,
