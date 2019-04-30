@@ -140,6 +140,15 @@ class Plumo
         cmds: cmds
       })
     end
+
+    nil
+  end
+
+  def color(color)
+    draw(
+      [:strokeStyle, color],
+      [:fillStyle, color]
+    )
   end
 
   def line(x0, y0, x1, y1, style={})
@@ -159,6 +168,20 @@ class Plumo
     draw(*cmds)
   end
 
+  def stroke_rect(x, y, w, h, style={})
+    cmds = []
+
+    if style.key?(:color)
+      cmds << [:strokeStyle, style[:color]]
+    end
+
+    cmds += [
+      [:strokeRect, x, y, w, h]
+    ]
+
+    draw(*cmds)
+  end
+
   def fill_rect(x, y, w, h, style={})
     cmds = []
 
@@ -169,6 +192,26 @@ class Plumo
     cmds += [
       [:beginPath],
       [:fillRect, x, y, w, h],
+    ]
+
+    draw(*cmds)
+  end
+
+  def stroke_circle(x, y, r, style={})
+    cmds = []
+
+    if style.key?(:color)
+      cmds << [:strokeStyle, style[:color]]
+    end
+
+    cmds += [
+      [:beginPath],
+      [:arc,
+       x, y,
+       r,
+       0, Math::PI * 2, false
+      ],
+      [:stroke]
     ]
 
     draw(*cmds)

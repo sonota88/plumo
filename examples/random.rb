@@ -1,4 +1,4 @@
-$LOAD_PATH.unshift './lib'
+load File.join(__dir__, "helper.rb")
 
 require 'plumo'
 
@@ -31,6 +31,19 @@ loop do
   plumo.line(
     rand_x, rand_y,
     rand_x, rand_y,
+    color: rand_color
+  )
+
+  plumo.stroke_circle(
+    rand_x, rand_y, rand * 50,
+    fill: true,
+    color: rand_color
+  )
+
+  width = rand * 50
+  plumo.stroke_rect(
+    rand_x, rand_y,
+    width, width,
     color: rand_color
   )
 
