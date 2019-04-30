@@ -89,7 +89,7 @@ class Plumo
 
     @server = WEBrick::HTTPServer.new(
       DocumentRoot: File.join(__dir__, "plumo/public"),
-      BindAddress: '127.0.0.1',
+      BindAddress: "127.0.0.1",
       Port: @opts[:port],
       AccessLog: [
         [logger_access, WEBrick::AccessLog::COMMON_LOG_FORMAT],
