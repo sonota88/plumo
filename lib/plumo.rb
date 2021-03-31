@@ -5,7 +5,6 @@ require 'pp'
 require 'timeout'
 
 class Plumo
-
   class NullLogger
     def <<(arg)
       ;
