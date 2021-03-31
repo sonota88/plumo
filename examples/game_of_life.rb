@@ -1,5 +1,3 @@
-# coding: utf-8
-
 load File.join(__dir__, "helper.rb")
 
 require 'plumo'

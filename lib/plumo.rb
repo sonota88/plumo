@@ -1,5 +1,3 @@
-# coding: utf-8
-
 require 'webrick'
 require 'cgi'
 require 'json'
