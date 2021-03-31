@@ -12,7 +12,7 @@ class Plumo
     end
   end
 
-  def initialize(w, h, opts={})
+  def initialize(w, h, opts = {})
     @w = w
     @h = h
     @session_id = nil
@@ -157,7 +157,7 @@ class Plumo
     )
   end
 
-  def line(x0, y0, x1, y1, style={})
+  def line(x0, y0, x1, y1, style = {})
     cmds = []
 
     if style.key?(:color)
@@ -174,7 +174,7 @@ class Plumo
     draw(*cmds)
   end
 
-  def stroke_rect(x, y, w, h, style={})
+  def stroke_rect(x, y, w, h, style = {})
     cmds = []
 
     if style.key?(:color)
@@ -188,7 +188,7 @@ class Plumo
     draw(*cmds)
   end
 
-  def fill_rect(x, y, w, h, style={})
+  def fill_rect(x, y, w, h, style = {})
     cmds = []
 
     if style.key?(:color)
@@ -203,7 +203,7 @@ class Plumo
     draw(*cmds)
   end
 
-  def stroke_circle(x, y, r, style={})
+  def stroke_circle(x, y, r, style = {})
     cmds = []
 
     if style.key?(:color)
@@ -223,7 +223,7 @@ class Plumo
     draw(*cmds)
   end
 
-  def fill_circle(x, y, r, style={})
+  def fill_circle(x, y, r, style = {})
     cmds = []
 
     if style.key?(:color)
