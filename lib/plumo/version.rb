@@ -1,3 +1,3 @@
-module Plumo
-  VERSION = "0.0.4"
+class Plumo
+  VERSION = "0.1.0"
 end
